@@ -1,7 +1,7 @@
 # R notes
 
 ### Pre requisites
-```
+```R
 library(nycflights13)
 library(tidyverse)
 ```
@@ -9,7 +9,7 @@ library(tidyverse)
 ### NA
 NA represents an unknown value so missing values are "_contagious_": almost any operation involving an unknown value will also be unknown.
 
-```
+```R
 NA ^ 0 # 1
 NA | T # TRUE
 F & NA # FALSE
@@ -36,7 +36,7 @@ NA * 0 # NA
   - Syntax : `filter(df, condition_1, condition_2, ...)`
 
   - Examples : 
-    ```
+    ```R
     filter(flights, month == 1, day == 1)
     perfect_flights <- filter(flights, dep_delay == 0, arr_delay == 0)
     filter(flights, origin %in% c("JFK", "EWR"))
@@ -49,18 +49,18 @@ NA * 0 # NA
   - Missing values are always sorted at the end
   - Syntax : `arrange(df, field_1, field_2, ...)`
   - Examples : 
-    ```
+    ```R
     arrange(flights, year, month, day)
     ```
   - **desc()**:
-    ```
+    ```R
     arrange(flights, desc(arr_delay), dep_delay)
     ```
 - #### `select()` // SELECT
   - for selecting columns from a tibble
   - Syntax: `select(df, col1, col2, col5, ...)`
   - Example:
-    ```
+    ```R
     select(df, col1:col4) # from col1 to col4 (inclusive)
     select(df, -(col1:col4)) # all columns except from 1 to 4
     ```
@@ -82,19 +82,19 @@ NA * 0 # NA
 - #### `summarise()` // GROUP BY
 - #### `group_by()` // ???
 - #### `near()`
-  ```
+  ```R
   > near(2, 1.9)
   [1] FALSE
   > near(2, 1.999999999999999)
   [1] TRUE
   ```
 - #### `between()`
-  ```
+  ```R
   > between(-4, -5, -1)
   [1] TRUE
   ```
 - #### `is.na()`
-  ```
+  ```R
   filter(flights, is.na(dep_time)) # Extract
   filter(flights, !is.na(dep_time)) # Filter
   ```
@@ -103,13 +103,13 @@ NA * 0 # NA
   - Update Column names
   - `rename(df, old_name=new_name)`
 
-**Q** Push all the rows having NA in a specific column to top
+**Q** Push all the rows having NA in a specific column to top  
 **A** `flights %>% arrange(!is.na(dep_time))`
 
-**Q** Arrange tibble by desc value of a column using `min_rank()`
+**Q** Arrange tibble by desc value of a column using `min_rank()`  
 **A** `flights %>% arrange(desc(min_rank(arr_delay)))`
 
-**Q** In `rank(a, ties.method="XXX")`, What are different ties.method params and their behavior?
+**Q** In `rank(a, ties.method="XXX")`, What are different ties.method params and their behavior?  
 **A** Ties.method specifies the method rank uses to break ties. Suppose you have a vector `c(1,2,3,3,4,5)`. It's obvious that 1 is first, and 2 is second. However, it's not clear what ranks should be assigned to the first and second 3s. Ties.method determines how this is done. There are a few options:
   - `average` assigns each tied element the "average" rank. The ranks would therefore be 1, 2, 3.5, 3.5, 5, 6
   - `first` lets the "earlier" entry "win", so the ranks are in numerical order `(1,2,3,4,5,6)`

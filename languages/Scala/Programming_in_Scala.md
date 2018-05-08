@@ -18,6 +18,7 @@ There is no primitive data type in Scala.
 > Bite short char into floating long double (_Byte Short Char Int Float Long Double_)
 
 **Literal**: A way to write constant value directly into code.
+
 **Integral Types**:
 - `Byte`, `Short`, `Int`, `Long`, `Char`
 
@@ -46,16 +47,17 @@ There is no primitive data type in Scala.
 - The octal number must be between `'\0'` and `'\377'`
 - A character literal can also be given as a general Unicode character consisting of four hex digits and preceded by a `\u`
 - **Special character literal escape sequence**:
-    | Literal | Meaning                    |
-    | ------- | -------------------------- |
-    | `\n`    | line feed (`\u000A`)       |
-    | `\b`    | backspace (`\u0008`)       |
-    | `\t`    | tab (`\u0009`)             |
-    | `\f`    | form feed (`\u000C`)       |
-    | `\r`    | carriage return (`\u000D`) |
-    | `\"`    | double quote (`\u0022`)    |
-    | `\'`    | single quote (`\u0027`)    |
-    | `\\`    | backslash (`\u005C`)       |
+
+    | Literal | Meaning                   |
+    | ------- | --------------------------|
+    | `\n`    | line feed (`\u000A`)      |
+    | `\b`    | backspace (`\u0008`)      |
+    | `\t`    | tab (`\u0009`)            |
+    | `\f`    | form feed (`\u000C`)      |
+    | `\r`    | carriage return (`\u000D`)|
+    | `\"`    | double quote (`\u0022`)   |
+    | `\'`    | single quote (`\u0027`)   |
+    | `\\`    | backslash (`\u005C`)      |
 
 ### Symbol Literals
 - `^'[a-zA-Z_]\w+$`
@@ -84,6 +86,7 @@ There is no primitive data type in Scala.
 - Scala also supports prefix and post fix operators
 - **Infix operators**:
   - Operators: `+ - / * % ^`
+  
       ```scala
         // User defined
         class A(value: Int) {
@@ -104,6 +107,7 @@ There is no primitive data type in Scala.
 - **Prefix operators**:
   - Operators: `+ - ! ~`
   - Method name syntax: `unary_<Operator>`
+  
       ```scala
       !true == true.unary_!
       -20 == 20.unary_-
